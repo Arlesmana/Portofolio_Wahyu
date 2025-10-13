@@ -16,44 +16,61 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
+            background-color: #f8f9fa;
         }
 
         .main-container {
             min-height: 100vh;
-        }
-
-        /* Panel Kiri (Gambar Ilustrasi) */
-        .image-panel {
-            background-color: #f8f9fa; /* Warna abu-abu sangat muda */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
+        }
+
+        .login-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(60,72,88,.12);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .image-panel {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem 2rem 2rem;
+            width: 50%;
         }
         
         .image-panel img {
-            max-width: 80%;
+            max-width: 320px;
             height: auto;
+            margin-right: -10px;
         }
 
-        /* Panel Kanan (Form) */
         .form-panel {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 50%;
+            padding: 2rem 2rem 2rem 1rem;
         }
 
         .form-wrapper {
             width: 100%;
             max-width: 400px;
-            padding: 2rem;
         }
 
         .form-wrapper h3 {
-            font-weight: 600;
-            font-size: 1.8rem;
+            font-weight: 700;
+            font-size: 2rem;
             color: #333;
+            margin-bottom: 0.5rem;
         }
 
         .form-wrapper .form-label {
@@ -65,20 +82,22 @@
             border-radius: 0.5rem;
             padding: 0.8rem 1rem;
             border: 1px solid #ced4da;
+            font-size: 1rem;
         }
         .form-control:focus {
             border-color: #86b7fe;
-            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
         }
 
         .btn-login {
-            font-weight: 500;
+            font-weight: 600;
             padding: 0.8rem;
             border-radius: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .forgot-link {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #6c757d;
             text-decoration: none;
         }
@@ -91,22 +110,36 @@
             padding-right: 40px; 
         }
 
+        @media (max-width: 768px) {
+            .login-card {
+                flex-direction: column;
+                max-width: 95vw;
+            }
+            .image-panel, .form-panel {
+                width: 100%;
+                padding: 2rem 1rem;
+            }
+            .image-panel img {
+                margin-right: 0;
+                max-width: 220px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="container-fluid main-container p-0">
-        <div class="row g-0 h-100">
+        <div class="row g-0 h-100 align-items-center">
 
-            <div class="col-md-6 d-none d-md-block image-panel">
+            <div class="col-md-6 d-none d-md-flex image-panel">
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-3305943-2757111.png" alt="Login Illustration">
             </div>
 
             <div class="col-md-6 col-12 form-panel">
                 <div class="form-wrapper">
-                    <div class="mb-5">
+                    <div class="mb-4">
                         <h3>Welcome Back!</h3>
-                        <p class="text-muted">Please sign in to continue.</p>
+                        <p class="text-muted mb-4">Please sign in to continue.</p>
                     </div>
 
                     <form method="POST" action="{{ route('login') }}">

@@ -82,7 +82,7 @@
 
             <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
                 <div class="card border-0 shadow-sm p-4">
-                    <form action="{{ route('massage.store') }}" method="post">
+                    <form action="{{ route('message.store') }}" method="post">
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" required>

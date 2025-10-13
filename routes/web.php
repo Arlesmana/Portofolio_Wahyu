@@ -6,26 +6,25 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\HomeController;
 
-// // Route to show welcome page
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 // Route for home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/massage', [HomeController::class, 'store'])->name('massage.store');
-
+Route::post('/message', [HomeController::class, 'store'])->name('message.store');
 
 Route::get('/blog', function () {
     return view('blog.blog');
 })->name('blog');
 
-// Route for dashboard page (auth middleware ensures only authenticated users can access)
-Route::get('/dashboard', function () {
-    return view('dashboard.main');
-})->middleware('auth')->name('dashboard'); 
+// --- ROUTES UNTUK DASHBOARD ---
 
+// Menampilkan halaman utama dashboard (daftar pesan)
+Route::get('/dashboard', [DashboardController::class, 'index'])
+     ->middleware('auth')
+     ->name('dashboard');
 
+// [DIPERBAIKI] Route untuk menghapus pesan
+Route::delete('/messages/{message}', [DashboardController::class, 'destroy'])
+    ->middleware('auth')
+     ->name('messages.destroy');
 
 // Logout route - POST method
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout')->middleware('auth');

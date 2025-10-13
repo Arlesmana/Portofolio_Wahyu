@@ -84,64 +84,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($messages as $message)
                                     <tr>
-                                        <td>{{ $message['tanggal_masuk'] }}</td>
-                                        <td>{{ $message['nama'] }}</td>
-                                        <td>andi.pratama@mail.com <br> <small>081234567890</small></td>
-                                        <td>Halo, saya tertarik untuk membuat website company profile...</td>
-                                        <td><span class="badge bg-primary">Baru</span></td>
+                                        {{-- Sintaks konsisten menggunakan '->' --}}
+                                        <td>{{ $message->tanggal_masuk->format('d-m-Y') }}</td>
+                                        <td>{{ $message->nama }}</td>
+                                        <td>{{ $message->email }}</td>
+                                        <td><small>{{ $message->no_telp }}</small></td>
+                                        <td>{{ $message->pesan }}</td>
+                                        <td>
+                                            @if($message->status === 'baru')
+                                                <span class="badge bg-primary">Baru</span>
+                                            @elseif($message->status === 'dibaca')
+                                                <span class="badge bg-warning">Dibaca</span>
+                                            @elseif($message->status === 'dibalas')
+                                                <span class="badge bg-success">Dibalas</span>
+                                            @else
+                                                <span class="badge bg-secondary">Tidak Diketahui</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="#" class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
-                                            <a href="#" class="btn btn-sm btn-danger"><i data-feather="trash"></i></a>
+                                            
+                                            {{-- [PERBAIKAN] Ganti $message->id menjadi $message --}}
+                                            <form action="{{ route('messages.destroy', $message) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus pesan ini?')">
+                                                    <i data-feather="trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Kolom Samping (Pesan Terbaru & Catatan) --}}
-            <div class="col-md-4">
-                {{-- Kartu Pesan Terbaru Belum Dibaca --}}
-                {{-- <div class="card">
-                    <div class="card-header">
-                        <h4>Pesan Terbaru (Belum Dibaca)</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Andi Pratama
-                                <a href="#" class="btn btn-sm btn-outline-primary">Lihat</a>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Rian Hidayat
-                                <a href="#" class="btn btn-sm btn-outline-primary">Lihat</a>
-                            </li>
-                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                (Nama Pengirim Lain)
-                                <a href="#" class="btn btn-sm btn-outline-primary">Lihat</a>
-                            </li>
-                        </ul>
-                    </div> --}}
-                </div>
-
-                {{-- Kartu Catatan & Tugas --}}
-                <div class="card widget-todo">
-                    <div class="card-header">
-                        <h4>Catatan & Tugas</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-secondary">
-                            <i data-feather="check-square"></i> Buat catatan cepat atau daftar tugas di sini.
-                        </div>
-                         {{-- Contoh To-Do List --}}
-                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Follow up Rian Hidayat.</li>
-                            <li class="list-group-item">Buat penawaran harga untuk Andi Pratama.</li>
-                            <li class="list-group-item">Jadwalkan meeting.</li>
-                        </ul>
                     </div>
                 </div>
             </div>

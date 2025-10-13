@@ -1,24 +1,29 @@
 <?php
+// app/Http/Controllers/HomeController.php
+
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
-use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-
+    /**
+     * Method ini dipanggil oleh route / (halaman utama)
+     */
     public function index()
     {
-        return view('home');
+        // Ganti 'home' dengan nama file view untuk halaman utama Anda (misalnya 'welcome')
+        return view('home'); 
     }
 
-
+    /**
+     * Method untuk menyimpan pesan dari form kontak
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string',
+            'nama' => 'required|string', // 'name' diubah ke 'nama' agar konsisten
             'email' => 'required|email',
             'no_telp' => 'required|string',
             'pesan' => 'required|string',
