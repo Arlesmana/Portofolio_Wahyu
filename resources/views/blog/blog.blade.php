@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 {{-- Mengatur judul khusus untuk halaman blog --}}
-@section('title', 'Blog - WHY Interior & Architect Design')
+@section('title', 'Blog - Yurivai Code')
 
 {{-- Mendefinisikan konten yang akan dimasukkan ke dalam @yield('content') di layout --}}
 @section('content')

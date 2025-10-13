@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\HomeController;
 
 // // Route to show welcome page
 // Route::get('/', function () {
@@ -11,9 +12,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 // });
 
 // Route for home page
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/massage', [HomeController::class, 'store'])->name('massage.store');
+
 
 Route::get('/blog', function () {
     return view('blog.blog');
@@ -21,7 +22,7 @@ Route::get('/blog', function () {
 
 // Route for dashboard page (auth middleware ensures only authenticated users can access)
 Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
+    return view('dashboard.main');
 })->middleware('auth')->name('dashboard'); 
 
 

@@ -15,6 +15,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ asset('voler/dist/assets/images/') }}" type="image/x-icon">
+  
   
   {{-- Pastikan path CSS ini benar atau gunakan asset() helper --}}
   <link href="{{ asset('OnePage/css/style.css') }}" rel="stylesheet">
@@ -27,7 +29,7 @@
   <header id="header">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Why Design</a>
+            <a class="navbar-brand" href="#">Yurivai Code</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
@@ -49,13 +51,15 @@
   <main>
     @yield('content')
   </main>
+
+  
   
   {{-- BAGIAN FOOTER (Sama untuk semua halaman) --}}
   <footer id="contact" class="footer">
       <div class="container">
           <div class="row g-5">
               <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                  <a href="#" class="footer-brand">Why Design</a>
+                  <a href="#" class="footer-brand">Yurivai Code</a>
                   <p class="mt-3">A passionate team of designers and architects dedicated to creating spaces that inspire and elevate the human experience.</p>
                   <div class="social-links mt-4">
                       <a href="#"><i class="bi bi-facebook"></i></a>
@@ -76,11 +80,11 @@
               <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                   <h5 class="footer-heading">Contact Us</h5>
                   <p>
-                      Why Design,<br>
+                      Yurivai Code,<br>
                       Karawang<br>
                       Indonesia <br><br>
                       <strong>Phone:</strong> +62 812 3456 7890<br>
-                      <strong>Email:</strong> whydesign@gmail.com<br>
+                      <strong>Email:</strong> yurivai.code@gmail.com<br>
                   </p>
               </div>
               <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">

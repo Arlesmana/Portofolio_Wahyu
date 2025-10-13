@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 {{-- Mengatur judul khusus untuk halaman ini --}}
-@section('title', 'Home - WHY Interior & Architect Design')
+@section('title', 'Home - Yurivai Code')
 
 {{-- Mendefinisikan konten yang akan dimasukkan ke dalam @yield('content') di layout --}}
 @section('content')
@@ -58,8 +58,94 @@
     </div>
   </section>
 
-  <section id="stats" class="stats section-padding">
-      {{-- Konten stats bisa ditambahkan di sini --}}
+  <section id="contact" class="contact section-padding bg-secondary">
+    <div class="container" data-aos="fade-up">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5" data-aos="fade-right" data-aos-delay="100">
+                <h2 class="section-heading">Let's Build Your Dream Space</h2>
+                <p class="text-muted mt-3 mb-4">Punya ide atau pertanyaan? Kami siap membantu. Hubungi kami melalui detail di bawah ini atau isi formulir di samping.</p>
+                <div class="contact-info">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box-contact"><i class="bi bi-geo-alt-fill"></i></div>
+                        <div class="ms-3"><strong>Alamat:</strong><br>Jl. Desain Utama No. 123, Jakarta, Indonesia</div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box-contact"><i class="bi bi-envelope-fill"></i></div>
+                        <div class="ms-3"><strong>Email:</strong><br>contact@why-interior.com</div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="icon-box-contact"><i class="bi bi-telephone-fill"></i></div>
+                        <div class="ms-3"><strong>Telepon:</strong><br>+62 812 3456 7890</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+                <div class="card border-0 shadow-sm p-4">
+                    <form action="{{ route('massage.store') }}" method="post">
+                        @csrf
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" required>
+                            <label for="name">Nama Lengkap</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control"  name="email" placeholder="Alamat Email" required>
+                            <label for="email">Alamat Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control"  name="no_telp" placeholder="Nomor Telepon" required>
+                            <label for="phone">Nomor Telepon</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" placeholder="Tuliskan pesan Anda"  name="pesan" style="height: 150px" required></textarea>
+                            <label for="message">Pesan / Detail Proyek</label>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg btn-custom-submit" type="submit">Kirim Pesan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
   </section>
 
 @endsection
+
+@push('styles')
+<style>
+    .icon-box-contact {
+        width: 50px;
+        height: 50px;
+        background-color: #f8f9fa; /* Warna terang */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #0d6efd; /* Warna utama Bootstrap */
+        flex-shrink: 0;
+    }
+
+    .form-floating > .form-control:focus,
+    .form-floating > .form-control:not(:placeholder-shown) {
+        padding-top: 1.625rem;
+        padding-bottom: .625rem;
+    }
+    
+    .btn-custom-submit {
+        background-color: #2c3e50; /* Warna gelap yang elegan */
+        border-color: #2c3e50;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom-submit:hover {
+        background-color: #34495e; /* Warna sedikit lebih terang saat hover */
+        border-color: #34495e;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+</style>
+@endpush
