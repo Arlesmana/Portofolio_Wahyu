@@ -30,7 +30,7 @@
                         </li>
                         <li class='sidebar-title'>Tim Project</li>
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{{ route('tim') }}" class='sidebar-link'>
                                 <i data-feather="users" width="20"></i> 
                                 <span>Tim</span>
                             </a>

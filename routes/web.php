@@ -26,6 +26,11 @@ Route::delete('/messages/{message}', [DashboardController::class, 'destroy'])
     ->middleware('auth')
      ->name('messages.destroy');
 
+
+route::get('/tim', function () {
+    return view('employee.tim');
+})->middleware(['auth'])->name('tim');
+
 // Logout route - POST method
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout')->middleware('auth');
 

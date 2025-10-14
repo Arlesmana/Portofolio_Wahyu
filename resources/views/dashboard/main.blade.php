@@ -11,57 +11,45 @@
     </div>
     <section class="section">
         <div class="row mb-2">
-            {{-- Kartu Statistik Pesan --}}
+            {{-- [UI DIPERBARUI] Kartu Statistik Pesan --}}
             <div class="col-12 col-md-3">
-                <div class="card card-statistic">
-                    <div class="card-body p-0">
-                        <div class="d-flex flex-column">
-                            <div class='px-3 py-3 d-flex justify-content-between'>
-                                <h3 class='card-title'>TOTAL PESAN MASUK</h3>
-                                <div class="card-right d-flex align-items-center"><p>152</p></div>
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon purple mb-2">
+                                    <i data-feather="mail" style="width: 40px; height: 40px;"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                <h6 class="text-muted font-semibold">Total Pesan Masuk</h6>
+                                <h6 class="font-extrabold mb-0">{{ $totalMessages }}</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {{-- Anda bisa menambahkan kartu statistik lain di sini dengan gaya yang sama --}}
+            {{-- Contoh kartu lain:
             <div class="col-12 col-md-3">
-                <div class="card card-statistic">
-                    <div class="card-body p-0">
-                        <div class="d-flex flex-column">
-                            <div class='px-3 py-3 d-flex justify-content-between'>
-                                <h3 class='card-title'>PESAN BELUM DIBACA</h3>
-                                <div class="card-right d-flex align-items-center"><p>5</p></div>
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon blue mb-2">
+                                    <i data-feather="message-square" style="width: 40px; height: 40px;"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                <h6 class="text-muted font-semibold">Pesan Baru</h6>
+                                <h6 class="font-extrabold mb-0">5</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3">
-                <div class="card card-statistic">
-                    <div class="card-body p-0">
-                        <div class="d-flex flex-column">
-                            <div class='px-3 py-3 d-flex justify-content-between'>
-                                <h3 class='card-title'>SUDAH DIBALAS</h3>
-                                <div class="card-right d-flex align-items-center"><p>120</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="card card-statistic">
-                    <div class="card-body p-0">
-                        <div class="d-flex flex-column">
-                            <div class='px-3 py-3 d-flex justify-content-between'>
-                                <h3 class='card-title'>PESAN HARI INI</h3>
-                                <div class="card-right d-flex align-items-center"><p>2</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            --}}
+                   
         <div class="row mb-4">
             {{-- Kolom Utama (Tabel Daftar Pesan) --}}
             <div class="col-md-12">
@@ -104,7 +92,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-info"><i data-feather="eye"></i></a>
+                                            {{-- <a href="#" class="btn btn-sm btn-info"><i data-feather="eye"></i></a> --}}
                                             
                                             {{-- [PERBAIKAN] Ganti $message->id menjadi $message --}}
                                             <form action="{{ route('messages.destroy', $message) }}" method="POST" style="display:inline;">
@@ -120,6 +108,27 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- [PENAMBAHAN] Bagian Catatan untuk Tim --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Catatan & Tugas</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Gunakan area ini untuk meninggalkan catatan atau tugas untuk anggota tim lainnya.</p>
+                        <ul>
+                            <li>Follow up pesan dari Budi (Project X).</li>
+                            <li>Siapkan penawaran untuk PT. Sejahtera Abadi.</li>
+                            <li>Update status semua pesan yang sudah dibalas.</li>
+                        </ul>
+                        <textarea class="form-control" rows="3" placeholder="Tambah catatan baru..."></textarea>
+                        <button class="btn btn-primary mt-2">Simpan Catatan</button>
                     </div>
                 </div>
             </div>

@@ -10,12 +10,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Ambil data pesan dari database, sesuaikan dengan model Anda
-        $messages = \App\Models\Message::all(); // Ganti dengan model yang sesuai
+        $messages = Message::orderBy('tanggal_masuk', 'desc')->get();
+        $totalMessages = Message::count(); // Hitung total semua pesan
 
-        // Kirim ke view
-        return view('dashboard.main', compact('messages'));
-        
+        // Kirim kedua variabel ke view
+        return view('dashboard.main', [
+            'messages' => $messages,
+            'totalMessages' => $totalMessages,
+        ]);
     }
     public function destroy(Message $message)
 {
@@ -23,5 +25,10 @@ class DashboardController extends Controller
     $message->delete();
 
     return redirect()->route('dashboard')->with('success', 'Pesan berhasil dihapus!');
-}
+    }
+    
+    public function totalMessages()
+    {
+        return Message::count();
+    }   
 }
